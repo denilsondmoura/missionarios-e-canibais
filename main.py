@@ -4,7 +4,7 @@ from operador import Operador
 pilha = []
 
 # Definindo estados 
-state = Estado(0,0,0)
+state = Estado(1,1,1)
 begin = Estado(0,0,0)
 goal = Estado(3,3,1)
 
