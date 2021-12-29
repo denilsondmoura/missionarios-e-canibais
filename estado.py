@@ -27,11 +27,8 @@ class Estado:
         self.applyOperator(operator)
 
         if ((self.cannibals > self.missionaries and self.missionaries == 0) 
-            or self.cannibals <= self.missionaries):
-            self.showState()
-            # print("self.cannibals > self.missionaries: ", self.cannibals > self.missionaries)
-            # print("self.missionaries == 0: ", self.missionaries == 0)
-            # print("self.cannibals <= self.missionaries: ", self.cannibals <= self.missionaries)
+            or self.cannibals <= self.missionaries and self.cannibals >= 0 and self.missionaries >= 0):
+            # self.showState()
 
             self.applyOperator(operator)
             return True
@@ -43,9 +40,10 @@ class Estado:
         braches = []
 
         for op in range(5):
+            # print("- ", op+1)
             if(self.verifyOperator(op+1) and self.getOppositeSide().verifyOperator(op+1)):
-                braches.append(op+1)
-        
+                braches.append(op+1)      
+
         return braches
 
     def isItGone(self):
@@ -56,5 +54,4 @@ class Estado:
     
     def getOppositeSide(self):
         oppositeSide = Estado(3-self.cannibals, 3-self.missionaries, int(not self.hasBoat))
-        oppositeSide.showState()
         return oppositeSide

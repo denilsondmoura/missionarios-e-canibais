@@ -4,7 +4,7 @@ from operador import Operador
 pilha = []
 
 # Definindo estados 
-state = Estado(1,1,1)
+state = Estado(0,0,0)
 begin = Estado(0,0,0)
 goal = Estado(3,3,1)
 
@@ -16,14 +16,25 @@ doisMissionario = Operador(4)
 umCanUmMis = Operador(5)
 
 # Aplicando os operadores 
-state.showState()
-print("branches: ", state.findBranches())
 
-# while(not state.isItGone()):
-#     state.showState()
-#     print("branches: ", state.findBranches())
-#     pilha.append(state.findBranches())
-#     state.applyOperator(pilha[0])
-#     pilha.pop(0)
+while(True):
+    state.showState()
+    pilha = pilha + state.findBranches()
+    print("LENGTH: ", len(pilha))
+    print("PILHA: ", pilha)
+    print("OPERATOR: ", pilha[0])
+    print()
 
-# print("acabou")
+    tempState = state
+    for op in pilha:
+
+        state.applyOperator(op)
+    pilha.pop(0)
+
+    if(len(pilha) == 0 or state.isItGone()):
+        break
+
+print("acabou")
+
+
+       
