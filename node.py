@@ -3,6 +3,7 @@ import copy
 
 
 class Node:
+    
 
     def __init__(self, state: Estado):
 
@@ -11,7 +12,9 @@ class Node:
         self.children = []
 
         self.findChildren()
-
+    
+    def __str__(self):
+        return str((self.state.cannibals, self.state.missionaries, self.state.hasBoat))
 
     def findBranches(self):
         branches = []
@@ -27,7 +30,9 @@ class Node:
 
         for op in self.branches:
             self.state.applyOperator(op)
+            
             temp = copy.copy(self.state)
+            # no = Node(temp)
             self.children.append(temp)
             # print("op: ", op, " - children: ", self.showChildren())
 
