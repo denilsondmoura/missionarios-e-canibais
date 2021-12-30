@@ -27,5 +27,3 @@ class Operador:
                 self.cannibals = 1
                 self.missionaries = 1  
         
-    def showOperator(self):
-        print("(", self.op, ",", self.cannibals , ",", self.missionaries, ")") 
